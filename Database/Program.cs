@@ -22,7 +22,7 @@ public class Program
 
             c.SaveChanges();
 
-            for (int i=0;i<40;i++)
+            for (int i = 0; i < 40; i++)
                 c.Medewerkers.Add(new Medewerker($"medewerker{i}@mail.com"));
             c.SaveChanges();
 

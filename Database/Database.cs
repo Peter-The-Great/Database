@@ -1,4 +1,5 @@
-﻿namespace Database;
+﻿using Database;
+
 class DatabaseContext : DbContext
 {
     public DbSet<Attractie> Attracties => Set<Attractie>();
@@ -29,23 +30,22 @@ class DatabaseContext : DbContext
         }
         return false;
     }
-    protected void OnmodelCreating(ModelBuilder modelBuilder)
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        //modelBuilder.Entity<Gebruiker>().HasData(new Post { BlogId = 1, PostId = 1, Title = "First post", Content = "Test 1" });
         modelBuilder
-        .Entity<Gast>()
-        .HasMany(g => g.Reserveringen)
-        .WithOne(g => g.Gast)
-        .OnDelete(DeleteBehavior.ClientSetNull);
+            .Entity<Gast>()
+            .HasMany(e => e.Reserveringen)
+            .WithOne(e => e.Gast)
+            .OnDelete(DeleteBehavior.ClientSetNull);
         modelBuilder.Entity<Onderhoud>()
-        .HasMany(r => r.Coordinators)
-        .WithMany(r => r.Coordineert);
+             .HasMany(b => b.Coordinators)
+             .WithMany(b => b.Coordineert);
         modelBuilder.Entity<Onderhoud>()
-        .HasMany(r => r.Medewerkers)
-        .WithMany(r => r.Doet);
-        //Must be tested!
+             .HasMany(b => b.Medewerker)
+             .WithMany(b => b.Doet);
+        // test dit!
     }
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Administratie;Integrated Security=True");
-    }
+    protected override void OnConfiguring(DbContextOptionsBuilder options)
+      => options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=YourDatabase"); //options.UseSqlite($"Data Source=C:\\Users\\InstallUser\\source\\repos\\ORMLINQ\\ORMLINQ\\data.db");
 }
