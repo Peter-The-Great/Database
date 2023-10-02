@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace Database;
+﻿namespace Database;
 abstract class Rapport
 {
     public abstract string Naam();
