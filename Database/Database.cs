@@ -1,4 +1,4 @@
-﻿using Database;
+﻿namespace Database;
 
 class DatabaseContext : DbContext
 {
@@ -47,5 +47,5 @@ class DatabaseContext : DbContext
         // test dit!
     }
     protected override void OnConfiguring(DbContextOptionsBuilder options)
-      => options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=YourDatabase"); //options.UseSqlite($"Data Source=C:\\Users\\InstallUser\\source\\repos\\ORMLINQ\\ORMLINQ\\data.db");
+      => options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Administratie"); //options.UseSqlite($"Data Source=C:\\Users\\InstallUser\\source\\repos\\ORMLINQ\\ORMLINQ\\data.db");
 }
