@@ -38,7 +38,6 @@ class Gebruiker
 [Table("Gast")]
 class Gast : Gebruiker
 {
-    //public int Id { get; set; }
     public Gast? Begeleider { get; set; }
     public GastInfo GastInfo { get; set; }
     public int GastInfoId { get; set; }

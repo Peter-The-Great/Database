@@ -1,5 +1,4 @@
 ﻿namespace Database;
-
 class DatabaseContext : DbContext
 {
     public DbSet<Attractie> Attracties => Set<Attractie>();
@@ -47,5 +46,7 @@ class DatabaseContext : DbContext
         // test dit!
     }
     protected override void OnConfiguring(DbContextOptionsBuilder options)
-      => options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Administratie"); //options.UseSqlite($"Data Source=C:\\Users\\InstallUser\\source\\repos\\ORMLINQ\\ORMLINQ\\data.db");
+      => options.UseSqlServer("server=.;database=Administratie;User Id=userman; Password=eigeel;TrustServerCertificate=True;");
+    //(localdb)\\MSSQLLocalDB;Initial Catalog=Administratie;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
+    //options.UseSqlite($"Data Source=C:\\Users\\InstallUser\\source\\repos\\ORMLINQ\\ORMLINQ\\data.db");
 }
